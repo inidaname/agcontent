@@ -7,7 +7,15 @@ module.exports = {
     },
     darkMode: false, // or 'media' or 'class'
     theme: {
-      extend: {},
+      fontSize: {
+        'zero': '0'
+      },
+      extend: {
+        transitionProperty: {
+          'width': 'width',
+          'font': 'font'
+        }
+      },
     },
     variants: {
       extend: {},

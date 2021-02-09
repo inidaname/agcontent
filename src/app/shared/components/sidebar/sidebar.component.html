@@ -1,3 +1,26 @@
-<aside class="min-h-screen fixed left-0 top-0 z-10">
-  Sidebar
+<aside [class]="(sideStatus | async) ? 'w-72 p-3 text-md' : 'w-0 p-0 text-zero'" class="transition-all ease-in-out duration-1000 h-screen fixed left-0 top-0 z-10 shadow shadow-2xl bg-white">
+  <nav class="h-full p-1 w-full flex flex-col justify-start items-start" [class]="(sideStatus | async)? 'flex ':'hidden'">
+    <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
+      <fa-icon [icon]="faHome" class="mr-5"></fa-icon> Home
+    </span>
+
+    <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
+      <fa-icon [icon]="faUser" class="mr-5"></fa-icon> Admins
+    </span>
+
+    <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
+      <fa-icon [icon]="faDoors" class="mr-5"></fa-icon> Branches
+    </span>
+    <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
+      <fa-icon [icon]="faTumbler" class="mr-5"></fa-icon> Foods
+    </span>
+
+    <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
+      <fa-icon [icon]="faBars" class="mr-5"></fa-icon> Orders
+    </span>
+
+    <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
+      <fa-icon [icon]="faPie" class="mr-5"></fa-icon> Inventory
+    </span>
+  </nav>
 </aside>
