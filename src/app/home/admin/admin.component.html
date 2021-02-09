@@ -1,0 +1,86 @@
+<article class="w-full min-h-screen">
+  <div class="w-100 flex justify-between items-center p-2 pt-5">
+    <span (click)="setSwitch('table')">Dashboard</span>
+    <span (click)="setSwitch('createNew')">Create Admin</span>
+  </div>
+  <section class="w-full min-h-100 flex flex-col">
+    <ng-container *ngIf="switchSide === 'table';else createSide">
+      <table class="table-auto w-full shadow-lg">
+        <thead class="p-12">
+          <tr class="text-center font-smaller text-gray-400">
+            <th class="py-3 text-xs">S/No</th>
+            <th class="py-3 text-xs">First Name</th>
+            <th class="py-3 text-xs">Last Name</th>
+            <th class="py-3 text-xs">Email Address</th>
+            <th class="py-3 text-xs">Phone Number</th>
+            <th class="py-3 text-xs">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-gray-200 text-sm text-center">
+            <td class="py-3">See</td>
+            <td class="py-3">Me</td>
+            <td class="py-3">Her</td>
+            <td class="py-3">Again</td>
+            <td class="py-3">Waiting</td>
+            <td class="py-3">For</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #createSide>
+      <div class="w-full flex flex-row justify-around items-center h-auto">
+        <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
+          <h4>Create Food Order</h4>
+          <hr class="w-full">
+          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+            <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <option value=""></option>
+              <option value=""></option>
+            </select>
+            <div class="absolute left-3 top-2">
+              <fa-icon [icon]="faLock"></fa-icon>
+            </div>
+          </div>
+          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+            <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <option value=""></option>
+              <option value=""></option>
+            </select>
+            <div class="absolute left-3 top-2">
+              <fa-icon [icon]="faLock"></fa-icon>
+            </div>
+          </div>
+          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+            <input type="password" id="password" name="password" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+            <div class="absolute left-3 top-2">
+              <fa-icon [icon]="faLock"></fa-icon>
+            </div>
+          </div>
+          <button class="self-end">Add Item Tray</button>
+        </div>
+
+
+        <div class="p-3 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
+          <h4>Order Tray</h4>
+          <p>List of Orders</p>
+          <p>Total</p>
+          <p>Branch</p>
+          <hr class="w-full">
+          <table class="table-auto">
+            <thead>
+              <tr>
+                <th>Food</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Sub Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+          </table>
+          <button class="self-end">Place Order</button>
+        </div>
+      </div>
+    </ng-template>
+  </section>
+</article>
