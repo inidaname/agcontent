@@ -1,9 +1,11 @@
 <header class="p-5 shadow shadow-md z-10 fixed top-0 left-0 w-screen bg-white h-20 flex row justify-between items-center">
   <div>
-      <fa-icon [icon]="faBar"></fa-icon>
-    <span (click)="sideBar()">Logo</span>
+      <fa-icon [icon]="faBar" (click)="sideBar()"></fa-icon>
+    <span>Logo</span>
   </div>
   <div>
-    Sign In
+    <a [routerLink]="['/login']">
+      Sign In
+    </a>
   </div>
 </header>

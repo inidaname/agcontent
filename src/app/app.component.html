@@ -1,5 +1,10 @@
 <app-header></app-header>
 <app-sidebar></app-sidebar>
-<main class="relative z-0">
+<ng-container *ngIf="(sideBar | async)">
+  <div class="absolute top-0 left-0 bg-black opacity-20 w-screen h-screen z-10" (click)="closeSideBar()">
+
+  </div>
+</ng-container>
+<main class="relative z-0 mt-24 px-3">
   <router-outlet></router-outlet>
 </main>
