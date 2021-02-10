@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   templateUrl: './food.component.html',
@@ -6,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodComponent implements OnInit {
 
-  constructor() { }
+  switchSide: string;
+  faLock = faBuilding;
+
+  constructor() {
+    this.switchSide = 'table';
+  }
 
   ngOnInit(): void {
+  }
+
+  setSwitch(switchState: string) {
+    this.switchSide = switchState;
   }
 
 }

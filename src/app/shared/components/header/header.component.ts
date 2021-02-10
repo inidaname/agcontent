@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
     console.log(this.status);
     this.status = !this.status;
     this.sideBarEffect.setSideBar(this.status);
+    this.status = !this.status;
   }
 
 }

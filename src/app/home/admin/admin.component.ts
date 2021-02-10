@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 
-
 @Component({
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']

@@ -1,26 +1,38 @@
 <aside [class]="(sideStatus | async) ? 'w-72 p-3 text-md' : 'w-0 p-0 text-zero'" class="transition-all ease-in-out duration-500 h-screen fixed left-0 top-0 z-20 shadow shadow-2xl bg-white">
   <nav class="h-full p-1 w-full flex flex-col justify-start items-start">
     <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
-      <fa-icon [icon]="faHome" class="mr-5"></fa-icon> Home
+      <a [routerLink]="['/orders']" routerLinkActive="router-link-active">
+        <fa-icon [icon]="faHome" class="mr-5"></fa-icon> Home
+      </a>
     </span>
 
     <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
-      <fa-icon [icon]="faUser" class="mr-5"></fa-icon> Admins
+      <a [routerLink]="['/admins']" routerLinkActive="router-link-active" >
+        <fa-icon [icon]="faUser" class="mr-5"></fa-icon> Admins
+      </a>
     </span>
 
     <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
-      <fa-icon [icon]="faDoors" class="mr-5"></fa-icon> Branches
+      <a [routerLink]="['/branch']" routerLinkActive="router-link-active">
+        <fa-icon [icon]="faDoors" class="mr-5"></fa-icon> Branches
+      </a>
     </span>
     <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
-      <fa-icon [icon]="faTumbler" class="mr-5"></fa-icon> Foods
+      <a [routerLink]="['/food']" routerLinkActive="router-link-active">
+        <fa-icon [icon]="faTumbler" class="mr-5"></fa-icon> Foods
+      </a>
     </span>
 
     <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
-      <fa-icon [icon]="faBars" class="mr-5"></fa-icon> Orders
+      <a [routerLink]="['/orders']" routerLinkActive="router-link-active">
+        <fa-icon [icon]="faBars" class="mr-5"></fa-icon> Orders
+      </a>
     </span>
 
     <span class="p-2 my-2 mx-0 w-full h-10 flex justify-start items-center">
-      <fa-icon [icon]="faPie" class="mr-5"></fa-icon> Inventory
+      <a [routerLink]="['/inventory']" routerLinkActive="router-link-active">
+        <fa-icon [icon]="faPie" class="mr-5"></fa-icon> Inventory
+      </a>
     </span>
   </nav>
 </aside>
