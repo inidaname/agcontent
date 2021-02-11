@@ -7,18 +7,18 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 })
 export class FoodComponent implements OnInit {
 
-  switchSide: string;
+  switchFood: string;
   faLock = faBuilding;
 
   constructor() {
-    this.switchSide = 'table';
+    this.switchFood = 'foodTable';
   }
 
   ngOnInit(): void {
   }
 
   setSwitch(switchState: string) {
-    this.switchSide = switchState;
+    this.switchFood = switchState;
   }
 
 }

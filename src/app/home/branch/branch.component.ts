@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faBahai, faBuilding, faChartBar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   templateUrl: './branch.component.html',
@@ -7,18 +7,20 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 })
 export class BranchComponent implements OnInit {
 
-  switchSide: string;
+  switchBranch: string;
   faLock = faBuilding;
+  faBars = faChartBar;
+  faBarSolid = faBahai;
 
   constructor() {
-    this.switchSide = 'table';
+    this.switchBranch = 'branchTable';
   }
 
   ngOnInit(): void {
   }
 
   setSwitch(switchState: string) {
-    this.switchSide = switchState;
+    this.switchBranch = switchState;
   }
 
 }

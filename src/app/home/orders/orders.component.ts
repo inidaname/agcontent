@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faBahai, faBuilding, faChartBar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   templateUrl: './orders.component.html',
@@ -7,18 +7,20 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 })
 export class OrdersComponent implements OnInit {
 
-  switchSide: string;
+  switchOrder: string;
   faLock = faBuilding;
+  faBars = faChartBar;
+  faBarSolid = faBahai;
 
   constructor() {
-    this.switchSide = 'table';
+    this.switchOrder = 'orderTable';
   }
 
   ngOnInit(): void {
   }
 
-  setSwitch(switchState: string) {
-    this.switchSide = switchState;
+  orderSwitch(switchState: string) {
+    this.switchOrder = switchState;
   }
 
 }

@@ -1,10 +1,16 @@
 <article class="w-full min-h-screen">
   <div class="w-100 flex justify-between items-center p-2 pt-5">
-    <span (click)="setSwitch('table')">Dashboard</span>
-    <span (click)="setSwitch('createNew')">Create Walkin Order</span>
+    <span class="hover:bg-gray-200 w-1/2 p-3" [class]="(switchOrder === 'orderTable') ? 'bg-gray-400' : ''" (click)="orderSwitch('orderTable')">
+      <fa-icon [icon]="faBars"></fa-icon>
+      Dashboard
+    </span>
+    <span class="hover:bg-gray-200 w-1/2 p-3" [class]="(switchOrder === 'createOrder') ? 'bg-gray-400' : ''" (click)="orderSwitch('createOrder')">
+      <fa-icon [icon]="faBarSolid"></fa-icon>
+      Create Walkin Order
+    </span>
   </div>
   <section class="w-full min-h-100 flex flex-col">
-    <ng-container *ngIf="switchSide === 'table';else createSide">
+    <ng-container *ngIf="switchOrder === 'orderTable'">
       <div>
         Filter
       </div>
@@ -35,7 +41,7 @@
         </tbody>
       </table>
     </ng-container>
-    <ng-template #createSide>
+    <ng-container *ngIf="switchOrder === 'createOrder'">
       <div class="w-full flex flex-row justify-around items-center h-auto">
         <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
           <h4>Create Food Order</h4>
@@ -88,6 +94,6 @@
           <button class="self-end">Place Order</button>
         </div>
       </div>
-    </ng-template>
+    </ng-container>
   </section>
 </article>
