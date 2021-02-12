@@ -4,7 +4,7 @@
         <fa-icon [icon]="faBars"></fa-icon>Dashboard</span>
       <span class="hover:bg-gray-200 w-2/3 p-3" [class]="(switchBranch === 'createBranch') ? 'bg-gray-400' : ''" (click)="setSwitch('createBranch')">
         <fa-icon [icon]="faBars"></fa-icon>Create Branch</span>
-      <span class="hover:bg-gray-200 w-2/3 p-3" [class]="(switchBranch === 'assignBranchTable') ? 'bg-gray-400' : ''" (click)="setSwitch('assignBranch')">
+      <span class="hover:bg-gray-200 w-2/3 p-3" [class]="(switchBranch === 'assignBranchTable') ? 'bg-gray-400' : ''" (click)="setSwitch('assignBranchTable')">
         <fa-icon [icon]="faBars"></fa-icon>Assign Branch Admin</span>
     </div>
     <section class="w-full min-h-100 flex flex-col">
@@ -31,61 +31,66 @@
         </table>
       </ng-container>
       <ng-container *ngIf="switchBranch === 'createBranch'">
-        <div class="w-full flex flex-row justify-around items-center h-auto">
-          <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
-            <h4>Create Food Order</h4>
-            <hr class="w-full">
-            <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+        <div class="w-full flex flex-row justify-around items-center h-auto mt-5">
+          <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-full md:w-2/4">
+            <h4>Add New Branch</h4>
+            <hr class="w-full mb-6">
+            <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
+              <label for="branchAdmin" class="absolute left-1 -top-6 transition-all duration-150">Branch Admin</label>
               <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                 <option value=""></option>
                 <option value=""></option>
               </select>
               <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faUser"></fa-icon>
+              </div>
+            </div>
+            <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
+              <label for="branchName" class="absolute left-1 -top-6 transition-all duration-150">Branch Name</label>
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
                 <fa-icon [icon]="faLock"></fa-icon>
               </div>
             </div>
-            <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+            <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
+              <label for="branchAddress" class="absolute left-1 -top-6 transition-all duration-150">Branch Address</label>
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faBranch"></fa-icon>
+              </div>
+            </div>
+            <button class="self-end">Add Item Tray</button>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="switchBranch === 'assignBranchTable'">
+        <div class="w-full flex flex-row justify-around items-center h-auto mt-5">
+          <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-full md:w-2/4">
+            <h4>Add New Branch</h4>
+            <hr class="w-full mb-6">
+            <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
+              <label for="branchAdmin" class="absolute left-1 -top-6 transition-all duration-150">Branch Admin</label>
               <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                 <option value=""></option>
                 <option value=""></option>
               </select>
               <div class="absolute left-3 top-2">
-                <fa-icon [icon]="faLock"></fa-icon>
+                <fa-icon [icon]="faUser"></fa-icon>
               </div>
             </div>
-            <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-              <input type="password" id="password" name="password" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+            <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
+              <label for="branchName" class="absolute left-1 -top-6 transition-all duration-150">Branch Name</label>
+              <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                <option value=""></option>
+                <option value=""></option>
+              </select>
               <div class="absolute left-3 top-2">
                 <fa-icon [icon]="faLock"></fa-icon>
               </div>
             </div>
             <button class="self-end">Add Item Tray</button>
           </div>
-
-
-          <div class="p-3 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
-            <h4>Order Tray</h4>
-            <p>List of Orders</p>
-            <p>Total</p>
-            <p>Branch</p>
-            <hr class="w-full">
-            <table class="table-auto">
-              <thead>
-                <tr>
-                  <th>Food</th>
-                  <th>Quantity</th>
-                  <th>Unit Price</th>
-                  <th>Sub Total</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-            </table>
-            <button class="self-end">Place Order</button>
-          </div>
         </div>
-      </ng-container>
-      <ng-container *ngIf="switchBranch === 'assignBranchTable'">
-
       </ng-container>
     </section>
   </article>
