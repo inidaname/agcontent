@@ -42,8 +42,8 @@
       </table>
     </ng-container>
     <ng-container *ngIf="switchOrder === 'createOrder'">
-      <div class="w-full flex flex-row justify-around items-center h-auto">
-        <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
+      <div class="w-full flex flex-col md:flex-row justify-around items-center h-auto">
+        <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-full my-5 md:my-0 md:w-5/12">
           <h4>Create Food Order</h4>
           <hr class="w-full">
           <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
@@ -74,7 +74,7 @@
         </div>
 
 
-        <div class="p-3 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
+        <div class="p-3 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-full my-5 md:my-0 md:w-5/12">
           <h4>Order Tray</h4>
           <p>List of Orders</p>
           <p>Total</p>
