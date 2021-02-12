@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MoveStatusService } from './shared/services/move-status.service';
 import { filter } from 'rxjs/operators'
+import { ApiService } from './shared/services/api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'agiri';
   sideBar: Observable<boolean>;
   closeSide: boolean;
 
   constructor (
     private sideEffect: MoveStatusService,
-    private router: Router
+    private router: Router,
+    private api: ApiService
   ) {
     this.sideBar = this.sideEffect.sideBarChange;
     this.closeSide = false;
@@ -27,7 +29,10 @@ export class AppComponent {
         this.closeSideBar();
       }
     });
+  }
 
+  ngOnInit() {
+    this.api.getAPI().subscribe(e=> console.log(e))
   }
 
   closeSideBar() {
