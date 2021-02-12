@@ -36,52 +36,58 @@
     </ng-container>
     <ng-container *ngIf="switchAdmin === 'createAdmin'">
       <div class="w-full flex flex-row justify-around items-center h-auto">
-        <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
+        <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-full md:w-3/5">
           <h4>Add New Admin</h4>
           <hr class="w-full">
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-            <div class="absolute left-3 top-2">
-              <fa-icon [icon]="faLock"></fa-icon>
+          <div class="flex flex-col justify-around items-center w-full md:flex-row">
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              <label for="firstName" class="absolute transition-all duration-150" (focus)="setTheClass()" [class]="(classSet) ? 'opacity-0' : 'left-8 top-2'">First Name</label>
+              <input type="text" name="" id="" (focus)="setTheClass()" (blur)="setTheClass()" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faUser"></fa-icon>
+              </div>
+            </div>
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              Last Name
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faGroup"></fa-icon>
+              </div>
             </div>
           </div>
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-            <div class="absolute left-3 top-2">
-              <fa-icon [icon]="faLock"></fa-icon>
+          <div class="flex flex-col justify-around items-center w-full md:flex-row">
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              Email
+              <input type="email" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faEnv"></fa-icon>
+              </div>
+            </div>
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              Password
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </div>
             </div>
           </div>
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <input type="password" id="password" name="password" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-            <div class="absolute left-3 top-2">
-              <fa-icon [icon]="faLock"></fa-icon>
+          <div class="flex flex-col justify-around items-center w-full md:flex-row">
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              Phone Number
+              <input type="email" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faPhone"></fa-icon>
+              </div>
+            </div>
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              Permission
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faUserSuit"></fa-icon>
+              </div>
             </div>
           </div>
           <button class="self-end">Add Item Tray</button>
-        </div>
-
-
-        <div class="p-3 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
-          <h4>Order Tray</h4>
-          <p>List of Orders</p>
-          <p>Total</p>
-          <p>Branch</p>
-          <hr class="w-full">
-          <table class="table-auto">
-            <thead>
-              <tr>
-                <th>Food</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Sub Total</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-          </table>
-          <button class="self-end">Place Order</button>
         </div>
       </div>
     </ng-container>
