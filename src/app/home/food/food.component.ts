@@ -11,7 +11,7 @@ export class FoodComponent implements OnInit {
   faLock = faBuilding;
 
   constructor() {
-    this.switchFood = 'foodTable';
+    this.switchFood = 'createFood';
   }
 
   ngOnInit(): void {

@@ -31,62 +31,65 @@
         </tbody>
       </table>
     </ng-container>
-    <ng-container *ngIf="switchFood === 'createFood'">
+    <ng-container *ngIf="switchFood === 'createCat'">
       <div class="w-full flex flex-row justify-around items-center h-auto">
         <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
           <h4>Create Food Order</h4>
-          <hr class="w-full">
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-            <div class="absolute left-3 top-2">
-              <fa-icon [icon]="faLock"></fa-icon>
-            </div>
-          </div>
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-            <div class="absolute left-3 top-2">
-              <fa-icon [icon]="faLock"></fa-icon>
-            </div>
-          </div>
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <input type="password" id="password" name="password" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+          <hr class="w-full mb-3">
+          <div class="relative my-7 focus-within:text-gray-600 text-gray-400">
+            <label for="branchAddress" class="absolute left-1 -top-6 transition-all duration-150">Branch Address</label>
+            <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
             <div class="absolute left-3 top-2">
               <fa-icon [icon]="faLock"></fa-icon>
             </div>
           </div>
           <button class="self-end">Add Item Tray</button>
         </div>
-
-
-        <div class="p-3 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-5/12">
-          <h4>Order Tray</h4>
-          <p>List of Orders</p>
-          <p>Total</p>
-          <p>Branch</p>
-          <hr class="w-full">
-          <table class="table-auto">
-            <thead>
-              <tr>
-                <th>Food</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Sub Total</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-          </table>
-          <button class="self-end">Place Order</button>
-        </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="switchFood === 'createCat'">
-
+    <ng-container *ngIf="switchFood === 'createFood'">
+      <div class="m-auto w-full md:w-2/4 shadow">
+        <div class="border w-full h-20 text-center my-2 flex flex-row justify-around items-center">
+          <span class="py-0 px-2 bg-blue-300 border rounded-full">1</span>
+          <span class="self-auto">Fill Food Basket</span>
+          <span class="py-0 px-2 bg-blue-300 border rounded-full">2</span>
+          <span>Add Food</span>
+          <span class="py-0 px-2 bg-blue-300 border rounded-full">3</span>
+          <span>Done</span>
+        </div>
+        <div class="flex flex-col justify-around items-center mt-4 w-full md:flex-row">
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              <label for="firstName" class="absolute left-1 -top-6 transition-all duration-150">First Name</label>
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </div>
+            </div>
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              <label for="firstName" class="absolute left-1 -top-6 transition-all duration-150">Last Name</label>
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col justify-around items-center mt-4 w-full md:flex-row">
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              <label for="firstName" class="absolute left-1 -top-6 transition-all duration-150">First Name</label>
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </div>
+            </div>
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400 w-full md:w-5/12">
+              <label for="firstName" class="absolute left-1 -top-6 transition-all duration-150">Last Name</label>
+              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </div>
+            </div>
+          </div>
+        </div>
     </ng-container>
   </section>
 </article>
