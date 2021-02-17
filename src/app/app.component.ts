@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { MoveStatusService } from './shared/services/move-status.service';
 import { filter } from 'rxjs/operators'
 import { ApiService } from './shared/services/api.service';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit {
   constructor (
     private sideEffect: MoveStatusService,
     private router: Router,
-    private api: ApiService
+    private api: ApiService,
+    private auth: AuthService
   ) {
     this.sideBar = this.sideEffect.sideBarChange;
     this.closeSide = false;
@@ -33,6 +35,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.api.getAPI().subscribe(e=> console.log(e))
+    this.auth.verifyToken();
   }
 
   closeSideBar() {

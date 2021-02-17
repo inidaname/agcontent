@@ -11,6 +11,8 @@ import { AdminComponent } from './admin/admin.component';
 import { BranchComponent } from './branch/branch.component';
 import { FoodComponent } from './food/food.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 
 @NgModule({
@@ -26,7 +28,10 @@ import { InventoryComponent } from './inventory/inventory.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
-  ]
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [AuthGuard]
 })
 export class HomeModule { }

@@ -7,9 +7,6 @@ module.exports = {
     },
     darkMode: false, // or 'media' or 'class'
     theme: {
-      textColor: {
-        'teal': '#3BAEB7'
-      },
       fontSize: {
         'zero': '0',
         'xs': '.75rem',

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 
@@ -9,8 +10,14 @@ export class ApiService {
   apilink = `https://menage-food-ordering-app.herokuapp.com/v1`;
   constructor(private httpClient: HttpClient) { }
 
+  handleError(err: HttpErrorResponse): Observable<never> {
+    return throwError(err.error);
+  }
+
   getAPI (): Observable<{}> {
-    return this.httpClient.get(this.apilink);
+    return this.httpClient.get(this.apilink).pipe(
+      catchError(this.handleError)
+    );
   }
 
   loginUser(): Observable<{}> {
@@ -94,7 +101,9 @@ export class ApiService {
   }
 
   adminLogin(body: {}): Observable<{}> {
-    return this.httpClient.post(`${this.apilink}/auth/loginx`, body, {});
+    return this.httpClient.post(`${this.apilink}/auth/loginx`, body, {}).pipe(
+      catchError(this.handleError)
+    );
   }
 
   updateAdminPerm(body: {}, id: string): Observable<{}> {
