@@ -4,7 +4,6 @@ import { AuthGuard } from '../shared/guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { BranchComponent } from './branch/branch.component';
 import { FoodComponent } from './food/food.component';
-import { HomeComponent } from './home.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { LoginComponent } from './login/login.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -16,21 +15,19 @@ const routes: Routes = [
       redirectTo: 'orders'
     },
     {
-      path: '',
-      component: HomeComponent
-    },
-    {
       path: 'login',
       component: LoginComponent,
       canActivate: [AuthGuard]
     },
     {
       path: 'orders',
-      component: OrdersComponent
+      component: OrdersComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'admins',
-      component: AdminComponent
+      component: AdminComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'branch',
@@ -39,11 +36,13 @@ const routes: Routes = [
     },
     {
       path: 'inventory',
-      component: InventoryComponent
+      component: InventoryComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'food',
-      component: FoodComponent
+      component: FoodComponent,
+      canActivate: [AuthGuard]
     }
   ];
 

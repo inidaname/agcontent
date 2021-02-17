@@ -41,6 +41,6 @@ export class AuthService {
       return null;
     }
 
-    return decodeToken.id;
+    return decodeToken;
   }
 }
