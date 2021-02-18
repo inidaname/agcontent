@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faBahai, faBuilding, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   templateUrl: './orders.component.html',
@@ -12,11 +13,14 @@ export class OrdersComponent implements OnInit {
   faBars = faChartBar;
   faBarSolid = faBahai;
 
-  constructor() {
+  constructor(
+    private auth: AuthService
+  ) {
     this.switchOrder = 'orderTable';
   }
 
   ngOnInit(): void {
+    this.auth.verifyToken$();
   }
 
   orderSwitch(switchState: string) {

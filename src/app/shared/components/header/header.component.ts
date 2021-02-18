@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { MoveStatusService } from '../../services/move-status.service';
 
@@ -13,20 +14,19 @@ export class HeaderComponent implements OnInit {
 
   faBar = faBars;
   status: boolean;
-  authenticated: boolean;
+  authenticated: Observable<boolean>;
   userDetail: any;
 
   constructor(
     private sideBarEffect: MoveStatusService,
-    private auth: AuthService,
+    public auth: AuthService,
     private route: Router
   ) {
     this.status = false;
-    this.authenticated = false;
+    this.authenticated = this.auth.tokenChange;
   }
 
   ngOnInit(): void {
-    this.authenticated = this.auth.verifyToken();
     if (this.authenticated) {
       this.userDetail = this.auth.decodeUser();
     }
@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
   logoutUser() {
     this.auth.logoutUser();
     this.route.navigate(['/login']);
+    // this.authenticated = false;
     return;
   }
 }

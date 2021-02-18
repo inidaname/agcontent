@@ -1,17 +1,17 @@
 <header class="p-5 shadow shadow-md z-10 fixed top-0 left-0 w-screen bg-white h-20 flex row justify-between items-center">
   <div class="flex flex-row w-1/11 items-center justify-around">
-      <fa-icon [icon]="faBar" class="text-teal" [class]="authenticated ? '' : 'hidden'" (click)="sideBar()"></fa-icon>
+      <fa-icon [icon]="faBar" class="text-teal cursor-pointer" [class]="((authenticated | async)) ? '' : 'hidden'" (click)="sideBar()"></fa-icon>
     <img src="assets/menagelogo.png" class="w-10 ml-3" alt="">
   </div>
-  <div *ngIf="!authenticated; else profileSpace">
+  <div *ngIf="!(authenticated | async); else profileSpace">
     <a [routerLink]="['/login']">
       Sign In
     </a>
   </div>
   <ng-template #profileSpace>
     <div>
-      {{userDetail.key}}
-      <span class="m-3" (click)="logoutUser()">Log Out</span>
+      {{((authenticated | async)) ? auth.decodeUser()?.key : ''}}
+      <span class="m-3 cursor-pointer" (click)="logoutUser()">Log Out</span>
     </div>
   </ng-template>
 </header>
