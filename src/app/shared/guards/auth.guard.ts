@@ -17,12 +17,23 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (!this.auth.verifyToken()) {
-        this.router.navigate(['/login']);
+      console.log(state)
+      console.log(route)
+      if (!localStorage.getItem('access-token')) {
+        if(state.url !== '/login') {
+          this.router.navigate(['/login']);
+          return true;
+        }
+        if(state.url === '/login') {
+          return true;
+        }
         return false;
       }
 
-      if (this.auth.verifyToken() && state.url === '/login') {
+      if (this.auth.verifyToken()) {
+        if (state.url !== '/login') {
+          return true;
+        }
         return false;
       }
 

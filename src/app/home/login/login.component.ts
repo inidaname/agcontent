@@ -39,18 +39,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    console.log(this.loginForm.value);
     this.checkingStatus = true;
     this.hasError = false;
     if (this.loginForm.valid)
       this.api.adminLogin(this.loginForm.value).subscribe(
         (e: any) => {
           this.checkingStatus = false;
-          console.log(e)
           if (e.success === true) {
             localStorage.setItem('access-token', e.data.accessToken);
             localStorage.setItem('refresh-token', e.data.refreshToken);
             this.route.navigate(['/orders']);
+            return;
           }
         }, err => {
           if (err) {

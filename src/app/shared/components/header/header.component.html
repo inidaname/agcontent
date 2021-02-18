@@ -9,6 +9,9 @@
     </a>
   </div>
   <ng-template #profileSpace>
-    {{userDetail.key}}
+    <div>
+      {{userDetail.key}}
+      <span class="m-3" (click)="logoutUser()">Log Out</span>
+    </div>
   </ng-template>
 </header>

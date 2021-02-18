@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 const helper = new JwtHelperService();
@@ -12,12 +13,17 @@ const isExpired = helper.isTokenExpired(tokenData)
 })
 export class AuthService {
 
-  constructor() {}
+  constructor(
+    private route: Router
+  ) {}
 
   verifyToken(): boolean {
-    console.log('this')
+    console.log(isExpired)
     if (isExpired) {
-      localStorage.removeItem('access-token');
+      if (this.route.url !== '/login'){
+        console.log(`It didn't work`)
+        localStorage.removeItem('access-token');
+      }
       return false;
     }
 
