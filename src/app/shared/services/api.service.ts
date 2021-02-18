@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Intercepter } from './intercepter';
 
 @Injectable({providedIn: 'root'})
 
@@ -36,8 +37,8 @@ export class ApiService {
     return this.httpClient.put(`${this.apilink}/order/confirm/${orderID}`, orderDetail, {});
   }
 
-  getAllOrder(): Observable<{}> {
-    return this.httpClient.get(`${this.apilink}/order/all`);
+  getAllOrder(): Observable<Intercepter> {
+    return this.httpClient.get<any>(`${this.apilink}/order/all`);
   }
 
   getOrdersWithQuery(query: any): Observable<{}> {

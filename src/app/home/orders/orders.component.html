@@ -14,10 +14,10 @@
       <div>
         Filter
       </div>
-      <table class="table-auto w-full shadow-lg">
+      <table class="table-auto w-full shadow-lg pl-5">
         <thead class="p-12">
           <tr class="text-center font-smaller text-gray-400">
-            <th class="py-3 text-xs">Order Code</th>
+            <th class="py-3 text-xs">Order Code {{(tableContent | async)?.count}}</th>
             <th class="py-3 text-xs">Last Name</th>
             <th class="py-3 text-xs">First Name</th>
             <th class="py-3 text-xs">Delivery Address</th>
@@ -28,15 +28,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="border-t border-gray-200 text-sm text-center">
-            <td class="py-3">See</td>
-            <td class="py-3">Me</td>
-            <td class="py-3">Her</td>
-            <td class="py-3">Again</td>
-            <td class="py-3">Waiting</td>
-            <td class="py-3">For</td>
-            <td class="py-3">Tomorrow</td>
-            <td class="py-3">To Come</td>
+          <tr *ngFor="let item of (tableContent | async)?.data" class="border-t border-gray-200 text-sm text-left pl-5">
+            <td class="py-3 pl-5">{{item.orderCode}}</td>
+            <td class="py-3">{{item.customer.lastName}}</td>
+            <td class="py-3">{{item.customer.firstName}}</td>
+            <td class="py-3">{{item.deliveryDetails.homeAddress}}</td>
+            <td class="py-3">{{item.customer.mobile}}</td>
+            <td class="py-3">{{item.totalPrice}}</td>
+            <td class="py-3">{{item.orderStatus}}</td>
+            <td class="py-3">{{item.createdAt | date}}</td>
           </tr>
         </tbody>
       </table>
