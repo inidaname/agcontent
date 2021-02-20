@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('access-token', e.data.accessToken);
             localStorage.setItem('refresh-token', e.data.refreshToken);
             this.route.navigate(['/orders']);
+            this.auth.verifyToken$();
             return;
           }
         }, err => {

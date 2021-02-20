@@ -34,8 +34,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.api.getAPI().subscribe(e=> console.log(e))
     this.auth.verifyToken();
+    this.auth.verifyToken$();
   }
 
   closeSideBar() {

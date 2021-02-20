@@ -18,7 +18,6 @@ export class OrdersComponent implements OnInit {
   tableContent: Observable<Intercepter>;
 
   constructor(
-    private auth: AuthService,
     private api: ApiService
   ) {
     this.switchOrder = 'orderTable';
@@ -26,7 +25,6 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.verifyToken$();
     this.api.getAllOrder().subscribe(e => console.log(e))
   }
 

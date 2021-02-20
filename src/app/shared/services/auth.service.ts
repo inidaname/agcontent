@@ -5,9 +5,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 const helper = new JwtHelperService();
 
-const tokenData: any = localStorage.getItem('access-token');
-const decodeToken = helper.decodeToken(tokenData);
-const isExpired = helper.isTokenExpired(tokenData)
+let tokenData: any;
+let decodeToken: any;
+let isExpired: any;
+let dateofToken: any;
+const theToken = helper.tokenGetter()
 
 @Injectable({
   providedIn: 'root'
@@ -23,20 +25,25 @@ export class AuthService {
   ) {
     this.tokenStatus = new BehaviorSubject(false);
     this.tokenChange = this.tokenStatus.asObservable();
+
+    tokenData = localStorage.getItem('access-token');
+    decodeToken = helper.decodeToken(tokenData);
+    isExpired = helper.isTokenExpired(tokenData);
+    dateofToken = helper.getTokenExpirationDate(tokenData);
   }
 
   verifyToken$() {
-    if (!localStorage.getItem('access-token')) {
-      // if (this.route.url !== '/login'){
-      //   localStorage.removeItem('access-token');
-      // }
+    if (isExpired) {
+      if (this.route.url !== '/login'){
+        localStorage.removeItem('access-token');
+      }
       this.tokenStatus.next(false);
     }
     this.tokenStatus.next(true);
   }
 
   verifyToken(): boolean {
-    if (!localStorage.getItem('access-token')) {
+    if (isExpired) {
       if (this.route.url !== '/login'){
         localStorage.removeItem('access-token');
       }

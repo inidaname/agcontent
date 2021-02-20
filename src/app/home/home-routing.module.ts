@@ -10,11 +10,6 @@ import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
     {
-      path: '',
-      pathMatch: 'full',
-      redirectTo: 'orders'
-    },
-    {
       path: 'login',
       component: LoginComponent,
       canActivate: [AuthGuard]

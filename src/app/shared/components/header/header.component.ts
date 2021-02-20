@@ -27,9 +27,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.authenticated) {
-      this.userDetail = this.auth.decodeUser();
-    }
+    this.auth.verifyToken$();
   }
 
   sideBar() {
@@ -41,7 +39,7 @@ export class HeaderComponent implements OnInit {
   logoutUser() {
     this.auth.logoutUser();
     this.route.navigate(['/login']);
-    // this.authenticated = false;
+    this.auth.verifyToken$();
     return;
   }
 }
