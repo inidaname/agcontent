@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Intercepter } from './intercepter';
+import { Food, Intercepter } from './intercepter';
 
 @Injectable({providedIn: 'root'})
 
@@ -53,8 +53,8 @@ export class ApiService {
     return this.httpClient.put(`${this.apilink}/food/portions/${id}`, foodDetail, {});
   }
 
-  getAllFood(): Observable<{}> {
-    return this.httpClient.get(`${this.apilink}/food?category=all`);
+  getAllFood(): Observable<Food> {
+    return this.httpClient.get<Food>(`${this.apilink}/food?category=all`);
   }
 
   updateFood(foodDetail: {}, foodID: string): Observable<{}> {
@@ -97,8 +97,8 @@ export class ApiService {
     return this.httpClient.post(`${this.apilink}/auth/admin`, body, {});
   }
 
-  getAllAdmins(): Observable<{}> {
-    return this.httpClient.get(`${this.apilink}/admin`);
+  getAllAdmins(): Observable<Food> {
+    return this.httpClient.get<Food>(`${this.apilink}/admin/all`);
   }
 
   adminLogin(body: {}): Observable<{}> {
@@ -119,8 +119,8 @@ export class ApiService {
     return this.httpClient.post(`${this.apilink}/branch`, body, {});
   }
 
-  getBranch(): Observable<{}> {
-    return this.httpClient.get(`${this.apilink}/branch`, {});
+  getBranch(): Observable<Food> {
+    return this.httpClient.get<Food>(`${this.apilink}/branch`, {});
   }
 
   activateBranch(body: {}, id: string): Observable<{}> {

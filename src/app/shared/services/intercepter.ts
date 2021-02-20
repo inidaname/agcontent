@@ -5,6 +5,11 @@ export interface Intercepter {
   status: number;
 }
 
+export interface Food {
+  success: boolean;
+  data: any[];
+}
+
 // export interface data {
 //   id: string;
 //   deliveryStatus: string;

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faBahai, faBuilding, faChartBar, faEnvelope, faLock, faPhone, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Food } from 'src/app/shared/services/intercepter';
 
 @Component({
   templateUrl: './admin.component.html',
@@ -17,13 +20,18 @@ export class AdminComponent implements OnInit {
   faPhone = faPhone;
   faUserSuit = faUser;
   classSet: boolean;
+  tableAdmin: Observable<any>;
 
-  constructor() {
+  constructor(
+    private api: ApiService
+  ) {
     this.switchAdmin = 'adminTable';
     this.classSet = false;
+    this.tableAdmin = this.api.getAllAdmins();
   }
 
   ngOnInit(): void {
+    this.api.getAllAdmins().subscribe(e => console.log(e))
   }
 
   setTheClass() {

@@ -23,12 +23,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="border-t border-gray-200 text-sm text-center">
+          <tr *ngFor="let item of (tableAdmin | async)?.data as list" class="border-t border-gray-200 text-sm text-center">
             <td class="py-3">See</td>
-            <td class="py-3">Me</td>
-            <td class="py-3">Her</td>
-            <td class="py-3">Again</td>
-            <td class="py-3">Waiting</td>
+            <td class="py-3">{{item.firstName}}</td>
+            <td class="py-3">{{item.lastName}}</td>
+            <td class="py-3">{{item.email}}</td>
+            <td class="py-3">{{item.mobile}}</td>
             <td class="py-3">For</td>
           </tr>
         </tbody>

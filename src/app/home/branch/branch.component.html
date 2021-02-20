@@ -20,7 +20,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="border-t border-gray-200 text-sm text-center">
+            <tr *ngFor="let item of (tableBranch | async)?.data as list" class="border-t border-gray-200 text-sm text-center">
               <td class="py-3">See</td>
               <td class="py-3">Me</td>
               <td class="py-3">Her</td>
