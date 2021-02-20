@@ -43,6 +43,7 @@ export class AuthService {
   }
 
   verifyToken(): boolean {
+    console.log(isExpired)
     if (isExpired) {
       if (this.route.url !== '/login'){
         localStorage.removeItem('access-token');

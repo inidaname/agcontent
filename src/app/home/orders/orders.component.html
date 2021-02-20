@@ -46,31 +46,31 @@
         <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-full my-5 md:my-0 md:w-5/12">
           <h4>Create Food Order</h4>
           <hr class="w-full">
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-            <div class="absolute left-3 top-2">
-              <fa-icon [icon]="faLock"></fa-icon>
+          <form>
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+              <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                <option *ngFor="let item of (branchList | async)?.data as list" [value]="item.name">{{item.name}}</option>
+              </select>
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </div>
             </div>
-          </div>
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-            <div class="absolute left-3 top-2">
-              <fa-icon [icon]="faLock"></fa-icon>
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+              <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                <option *ngFor="let item of (branchList | async)?.data as list" [value]="item.name">{{item.name}}</option>
+              </select>
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </div>
             </div>
-          </div>
-          <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-            <input type="password" id="password" name="password" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-            <div class="absolute left-3 top-2">
-              <fa-icon [icon]="faLock"></fa-icon>
+            <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+              <input type="password" id="password" name="password" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+              <div class="absolute left-3 top-2">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </div>
             </div>
-          </div>
-          <button class="self-end">Add Item Tray</button>
+            <button class="self-end">Add Item Tray</button>
+          </form>
         </div>
 
 
