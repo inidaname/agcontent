@@ -27,23 +27,35 @@ export class AuthService {
     this.tokenChange = this.tokenStatus.asObservable();
 
     tokenData = localStorage.getItem('access-token');
-    decodeToken = helper.decodeToken(tokenData);
-    isExpired = helper.isTokenExpired(tokenData);
-    dateofToken = helper.getTokenExpirationDate(tokenData);
+  }
+
+  setAuth(token: string | null): boolean {
+    if (!token) {
+      return false;
+    }
+    decodeToken = helper.decodeToken(token);
+    isExpired = helper.isTokenExpired(token);
+    dateofToken = helper.getTokenExpirationDate(token);
+    return true;
+
   }
 
   verifyToken$() {
     if (isExpired) {
       if (this.route.url !== '/login'){
+        console.log(isExpired)
+        console.log(this.route.url)
         localStorage.removeItem('access-token');
       }
       this.tokenStatus.next(false);
+      return ;
     }
     this.tokenStatus.next(true);
+    return ;
   }
 
   verifyToken(): boolean {
-    console.log(isExpired)
+    console.log(isExpired )
     if (isExpired) {
       if (this.route.url !== '/login'){
         localStorage.removeItem('access-token');
@@ -59,6 +71,7 @@ export class AuthService {
 
   logoutUser(): boolean {
     if (!this.verifyToken()) {
+      localStorage.removeItem('access-token');
       return false;
     }
     localStorage.removeItem('access-token');

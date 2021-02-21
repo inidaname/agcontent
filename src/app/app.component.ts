@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth.setAuth(localStorage.getItem('access-token'));
     this.auth.verifyToken();
     this.auth.verifyToken$();
   }

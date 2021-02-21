@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faBahai, faBuilding, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import { faBahai, faBeer, faBuilding, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -14,9 +14,11 @@ export class OrdersComponent implements OnInit {
   switchOrder: string;
   faLock = faBuilding;
   faBars = faChartBar;
+  faCup = faBeer;
   faBarSolid = faBahai;
   tableContent: Observable<Intercepter>;
   branchList: Observable<Food>;
+  dataBind: any;
 
   constructor(
     private api: ApiService
@@ -32,6 +34,10 @@ export class OrdersComponent implements OnInit {
 
   orderSwitch(switchState: string) {
     this.switchOrder = switchState;
+  }
+
+  checkData(event: any) {
+    console.log(event)
   }
 
 }

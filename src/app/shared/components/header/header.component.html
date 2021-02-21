@@ -3,14 +3,14 @@
       <fa-icon [icon]="faBar" class="text-teal cursor-pointer" [class]="((authenticated | async)) ? '' : 'hidden'" (click)="sideBar()"></fa-icon>
     <img src="assets/menagelogo.png" class="w-10 ml-3" alt="">
   </div>
-  <div *ngIf="!(authenticated | async); else profileSpace">
+  <div *ngIf="(authenticated | async) === false; else profileSpace">
     <a [routerLink]="['/login']">
       Sign In
     </a>
   </div>
   <ng-template #profileSpace>
     <div>
-      {{((authenticated | async)) ? auth.decodeUser()?.key : ''}}
+      {{(authenticated | async) ? auth.decodeUser()?.key : ''}}
       <span class="m-3 cursor-pointer" (click)="logoutUser()">Log Out</span>
     </div>
   </ng-template>

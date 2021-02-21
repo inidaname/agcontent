@@ -27,7 +27,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.verifyToken$();
+    // this.auth.verifyToken$();
+    this.authenticated.subscribe(e => console.log(e))
   }
 
   sideBar() {

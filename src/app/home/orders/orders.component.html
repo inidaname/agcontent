@@ -48,27 +48,29 @@
           <hr class="w-full">
           <form>
             <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-              <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-                <option *ngFor="let item of (branchList | async)?.data as list" [value]="item.name">{{item.name}}</option>
+              <select (change)="checkData(dataBind)" [(ngModel)]="dataBind" name="getBranch" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                <option *ngFor="let item of (branchList | async)?.data" [value]="item._id" [disabled]="!item.active">{{item.name}}</option>
               </select>
               <div class="absolute left-3 top-2">
                 <fa-icon [icon]="faLock"></fa-icon>
               </div>
             </div>
-            <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-              <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-                <option *ngFor="let item of (branchList | async)?.data as list" [value]="item.name">{{item.name}}</option>
-              </select>
-              <div class="absolute left-3 top-2">
-                <fa-icon [icon]="faLock"></fa-icon>
+            <ng-container *ngIf="dataBind">
+              <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+                <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                  <option *ngFor="let item of (branchList | async)?.data as list" [value]="item.name">{{item.name}}</option>
+                </select>
+                <div class="absolute left-3 top-2">
+                  <fa-icon [icon]="faCup"></fa-icon>
+                </div>
               </div>
-            </div>
-            <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
-              <input type="password" id="password" name="password" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-              <div class="absolute left-3 top-2">
-                <fa-icon [icon]="faLock"></fa-icon>
+              <div class="relative my-3 focus-within:text-gray-600 text-gray-400">
+                <input type="password" id="password" name="password" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                <div class="absolute left-3 top-2">
+                  <fa-icon [icon]="faLock"></fa-icon>
+                </div>
               </div>
-            </div>
+            </ng-container>
             <button class="self-end">Add Item Tray</button>
           </form>
         </div>
