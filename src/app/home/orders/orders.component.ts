@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faBahai, faBeer, faBuilding, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faBahai, faBeer, faBuilding, faChartBar, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -15,17 +16,25 @@ export class OrdersComponent implements OnInit {
   faLock = faBuilding;
   faBars = faChartBar;
   faCup = faBeer;
+  faPlus = faPlus;
   faBarSolid = faBahai;
   tableContent: Observable<Intercepter>;
   branchList: Observable<Food>;
   dataBind: any;
+  orderTrayForm: FormGroup;
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private fb: FormBuilder
   ) {
     this.switchOrder = 'orderTable';
     this.tableContent = this.api.getAllOrder();
     this.branchList = this.api.getBranch()
+    this.orderTrayForm = this.fb.group({
+      getBranch: ['', Validators.required],
+      getMenuList: ['', Validators.required],
+      trayQuantity: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {
