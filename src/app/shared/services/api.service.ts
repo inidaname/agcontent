@@ -94,7 +94,9 @@ export class ApiService {
   }
 
   createAdmin(body: {}): Observable<{}> {
-    return this.httpClient.post(`${this.apilink}/auth/admin`, body, {});
+    return this.httpClient.post(`${this.apilink}/auth/admin`, body, {}).pipe(
+      catchError(this.handleError)
+    )
   }
 
   getAllAdmins(): Observable<Food> {
