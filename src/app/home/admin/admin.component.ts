@@ -23,11 +23,13 @@ export class AdminComponent implements OnInit {
   classSet: boolean;
   tableAdmin: Observable<any>;
   createAdminForm: FormGroup;
+  statusReturned: string;
 
   constructor(
     private api: ApiService,
     private fb: FormBuilder
   ) {
+    this.statusReturned = '';
     this.switchAdmin = 'adminTable';
     this.classSet = false;
     this.tableAdmin = this.api.getAllAdmins();
@@ -37,7 +39,7 @@ export class AdminComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       mobile: ['', Validators.required],
-      permission: ['', Validators.required]
+      permission: ['']
     })
   }
 
@@ -55,11 +57,17 @@ export class AdminComponent implements OnInit {
   }
 
   createAdmin() {
+    this.statusReturned = '';
     if (!this.createAdminForm.valid) {
       return
     }
 
-    this.api.createAdmin(this.createAdminForm.value).subscribe(e => console.log(e))
+    this.api.createAdmin(this.createAdminForm.value).subscribe((e: any) => {
+        this.tableAdmin
+        this.statusReturned = 'success'
+      }, (e: any) => {
+      this.statusReturned = 'failed'
+    })
   }
 
 }

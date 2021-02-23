@@ -94,6 +94,8 @@
             </div>
             <button (click)="createAdmin()" class="self-end border p-2 my-5" [class]="!createAdminForm.valid ? 'bg-gray-300 text-gray-400' : 'bg-blue-400'">Create Admin</button>
           </form>
+          <span class="bg-green-300 text-green-900 p-3 w-full rounded" [class]="statusReturned === 'success' ? '': 'hidden'">Admin successfully created</span>
+          <span class="bg-red-300 text-red-900 p-3 w-full rounded" [class]="statusReturned === 'failed' ? '': 'hidden'">Admin successfully created</span>
         </div>
       </div>
     </ng-container>
