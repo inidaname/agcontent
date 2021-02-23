@@ -20,11 +20,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of (tableBranch | async)?.data as list" class="border-t border-gray-200 text-sm text-center">
-              <td class="py-3">See</td>
-              <td class="py-3">Me</td>
-              <td class="py-3">Her</td>
-              <td class="py-3">Again</td>
+            <tr *ngFor="let item of (tableBranch | async)?.data let i = index" class="border-t border-gray-200 text-sm text-center">
+              <td class="py-3">{{i+1}}</td>
+              <td class="py-3">{{item.name}}</td>
+              <td class="py-3">{{item.location}}</td>
+              <td class="py-3">{{item.active ? 'active' : 'inactive'}}</td>
               <td class="py-3">For</td>
             </tr>
           </tbody>
@@ -33,36 +33,39 @@
       <ng-container *ngIf="switchBranch === 'createBranch'">
         <div class="w-full flex flex-row justify-around items-center h-auto mt-5">
           <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-full md:w-2/4">
-            <h4>Add New Branch</h4>
+            <h4 class="text-teal font-bold mb-5">Add New Branch</h4>
             <hr class="w-full mb-6">
-            <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
-              <label for="branchAdmin" class="absolute left-1 -top-6 transition-all duration-150">Branch Admin</label>
-              <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <div class="absolute left-3 top-2">
-                <fa-icon [icon]="faUser"></fa-icon>
+            <form [formGroup]="createBranchForm" class="w-full flex flex-col justify-evenly items-stretch">
+              <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
+                <label for="branchAdmin" class="absolute left-1 -top-6 transition-all duration-150">Branch Admin</label>
+                <select formControlName="admins" id="branchAdmin" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                  <option *ngFor="let adminItem of (listAdmins | async)?.data as list" [value]="adminItem._id">{{adminItem.firstName}} {{adminItem.lastName}}</option>
+                </select>
+                <div class="absolute left-3 top-2">
+                  <fa-icon [icon]="faUser"></fa-icon>
+                </div>
               </div>
-            </div>
-            <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
-              <label for="branchName" class="absolute left-1 -top-6 transition-all duration-150">Branch Name</label>
-              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-              <div class="absolute left-3 top-2">
-                <fa-icon [icon]="faLock"></fa-icon>
+              <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
+                <label for="branchName" class="absolute left-1 -top-6 transition-all duration-150">Branch Name</label>
+                <input type="text" formControlName="name" id="branchName" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                <div class="absolute left-3 top-2">
+                  <fa-icon [icon]="faLock"></fa-icon>
+                </div>
               </div>
-            </div>
-            <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
-              <label for="branchAddress" class="absolute left-1 -top-6 transition-all duration-150">Branch Address</label>
-              <input type="text" name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-              <div class="absolute left-3 top-2">
-                <fa-icon [icon]="faBranch"></fa-icon>
+              <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
+                <label for="branchAddress" class="absolute left-1 -top-6 transition-all duration-150">Branch Address</label>
+                <input type="text" formControlName="location" id="branchAddress" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                <div class="absolute left-3 top-2">
+                  <fa-icon [icon]="faBranch"></fa-icon>
+                </div>
               </div>
-            </div>
-            <button class="self-end">Add Item Tray</button>
+              <button class="self-end border p-2 my-5" [class]="!createBranchForm.valid ? 'bg-gray-300 text-gray-400' : 'bg-blue-400'">Create Branch</button>
+            </form>
           </div>
         </div>
       </ng-container>
+
+
       <ng-container *ngIf="switchBranch === 'assignBranchTable'">
         <div class="w-full flex flex-row justify-around items-center h-auto mt-5">
           <div class="p-3 min-h-60 shadow-md border rounded-md flex flex-col justify-evenly items-stretch w-full md:w-2/4">
@@ -71,8 +74,7 @@
             <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
               <label for="branchAdmin" class="absolute left-1 -top-6 transition-all duration-150">Branch Admin</label>
               <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-                <option value=""></option>
-                <option value=""></option>
+                <option *ngFor="let adminItem of (listAdmins | async)?.data as list" [value]="adminItem._id">{{adminItem.firstName}} {{adminItem.lastName}}</option>
               </select>
               <div class="absolute left-3 top-2">
                 <fa-icon [icon]="faUser"></fa-icon>
@@ -81,8 +83,7 @@
             <div class="relative my-5 focus-within:text-gray-600 text-gray-400">
               <label for="branchName" class="absolute left-1 -top-6 transition-all duration-150">Branch Name</label>
               <select name="" id="" class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-                <option value=""></option>
-                <option value=""></option>
+                <option *ngFor="let branchItem of (tableBranch | async)?.data as list" [value]="branchItem._id">{{branchItem.name}}</option>
               </select>
               <div class="absolute left-3 top-2">
                 <fa-icon [icon]="faLock"></fa-icon>
