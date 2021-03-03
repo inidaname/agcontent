@@ -23,12 +23,14 @@ export class BranchComponent implements OnInit {
   createBranchForm: FormGroup;
   assignAdmin: FormGroup;
   adminBind: any;
+  mobile: any;
 
   constructor(
     private api: ApiService,
     private fb: FormBuilder,
     private auth: AuthService
   ) {
+    this.mobile = null;
     this.switchBranch = 'createBranch';
     this.tableBranch = this.api.getBranch();
     this.listAdmins = this.api.getAllAdmins();
@@ -36,7 +38,7 @@ export class BranchComponent implements OnInit {
       admins: ['', Validators.required],
       name: ['', Validators.required],
       location: ['', Validators.required],
-      contacts: [{}]
+      contacts: [{mobile: this.mobile}]
     });
 
     this.assignAdmin = this.fb.group({
@@ -49,15 +51,31 @@ export class BranchComponent implements OnInit {
     this.tableBranch.subscribe(e => console.log(e));
   }
 
-  createBranch(item: any) {
+  setGetAdmin(item: string) {
     console.log(item)
-    // if (this.createBranchForm.valid) {
-    //   this.api.createBranch(this.createBranchForm.value).subscribe(e => {
-    //     console.log(e);
-    //   }, err => {
-    //     console.log(err)
-    //   })
-    // }
+    let here = this
+    this.listAdmins.subscribe(
+      e => {
+        e.data.filter((v) => {
+          if (v._id === item) {
+            here.createBranchForm.controls.contacts.setValue({mobile: v.mobile})
+            console.log(v)
+          }
+        })
+      }
+    )
+  }
+
+  createBranch() {
+    console.log(this.createBranchForm.value)
+    if (this.createBranchForm.valid) {
+      this.createBranchForm.controls.admins.disable()
+      this.api.createBranch(this.createBranchForm.value).subscribe(e => {
+        console.log(e);
+      }, err => {
+        console.log(err)
+      })
+    }
   }
 
   setSwitch(switchState: string) {
