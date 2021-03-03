@@ -49,8 +49,8 @@ export class BranchComponent implements OnInit {
     this.tableBranch.subscribe(e => console.log(e));
   }
 
-  createBranch() {
-    console.log(this.adminBind)
+  createBranch(item: any) {
+    console.log(item)
     // if (this.createBranchForm.valid) {
     //   this.api.createBranch(this.createBranchForm.value).subscribe(e => {
     //     console.log(e);

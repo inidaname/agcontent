@@ -31,6 +31,7 @@ export class AuthService {
 
   setAuth(token: string | null): boolean {
     if (!token) {
+      console.log(false)
       return false;
     }
     decodeToken = helper.decodeToken(token);
@@ -41,10 +42,9 @@ export class AuthService {
   }
 
   verifyToken$() {
-    if (isExpired) {
+    console.log(isExpired)
+    if (isExpired || isExpired === undefined) {
       if (this.route.url !== '/login'){
-        console.log(isExpired)
-        console.log(this.route.url)
         localStorage.removeItem('access-token');
       }
       this.tokenStatus.next(false);
@@ -55,7 +55,6 @@ export class AuthService {
   }
 
   verifyToken(): boolean {
-    console.log(isExpired )
     if (isExpired) {
       if (this.route.url !== '/login'){
         localStorage.removeItem('access-token');
